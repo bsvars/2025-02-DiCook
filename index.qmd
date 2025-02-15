@@ -1,7 +1,7 @@
 ---
-title: "<span style='color: #ffd700;'>Bayesian Structural Vector Autoregressions</span>" 
-author: "<span style='color: #ffd700;'>by Tomasz Woźniak</span>"
-email: "tomasz.wozniak@unimelb.edu.au"
+title: "<span style='color: #ffd700;'>R package bsvarSIGNs</span>" 
+author: "<span style='color: #ffd700;'>Xiaolei (Adam) Wang</span>"
+email: "adam.wang@unimelb.edu.au"
 title-slide-attributes:
   data-background-color: "#ff69b4"
 number-sections: false
@@ -19,6 +19,7 @@ execute:
 ##  {background-color="#ff69b4"}
 
 $$ $$
+
 
 ### Structural Vector Autoregressions {style="color:#ffd700;"}
 
