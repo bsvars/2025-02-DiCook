@@ -21,6 +21,8 @@ execute:
 $$ $$
 
 
+hi
+
 ### Structural Vector Autoregressions {style="color:#ffd700;"}
 
 ### Identification of Structural VARs {style="color:#ffd700;"}
