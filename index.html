@@ -375,6 +375,7 @@ By_t &amp;= BAx_t + u_t
 \end{align*}\]</span></p></li>
 <li><p>Commonly used in empirical macroeconomics</p>
 <ul>
+<li>combine economic theory with data</li>
 <li>dynamic causal effect of monetary policy shock</li>
 </ul></li>
 </ul>
@@ -382,15 +383,13 @@ By_t &amp;= BAx_t + u_t
 <section id="sign" class="slide level2" data-background-color="#001D31">
 <h2><span style="color: #ff68b4;">SIGN?</span></h2>
 <ul>
-<li><p>Can’t identify <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> due to simultaneity, SIGN restriction helps<sup>1</sup>!</p></li>
-<li><p>For example, consider 4 variables<sup>2</sup>: cash rate, GDP, consumer price index, and trade-weighted exchange rate</p></li>
-<li><p>According to economic theory, may restrict <span class="math inline">\(B^{-1}\)</span> s.t.</p></li>
-</ul>
-<p><span class="math display">\[\begin{align*}
+<li><p>Can’t identify <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> due to simultaneity, SIGN restriction helps!<sup>1</sup></p></li>
+<li><p>For example, consider 4 variables: cash rate, GDP, consumer price index, and trade-weighted exchange rate<sup>2</sup></p></li>
+<li><p>According to economic theory, may restrict <span class="math inline">\(B^{-1}\)</span> s.t. <span class="math display">\[\begin{align*}
 \begin{bmatrix}
 \text{CASH}_t\\\text{GDP}_t\\\text{CPI}_t\\\text{TWI}_t
 \end{bmatrix}
-=
+&amp;=
 
 \dots+
 \begin{bmatrix}
@@ -399,17 +398,42 @@ By_t &amp;= BAx_t + u_t
 \begin{bmatrix}
 u_{1t}^{\text{MP}}\\u_{2t}\\u_{3t}\\u_{4t}
 \end{bmatrix}
-\end{align*}\]</span></p>
-<ul>
-<li><span class="math inline">\(B^{-1}\)</span> is the “impulse response” at horizon 0, can extend to further horizons</li>
+\end{align*}\]</span></p></li>
+<li><p><span class="math inline">\(B^{-1}\)</span> is the “impulse response” at horizon 0, can extend to further horizons</p></li>
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn1"><p><a href="https://doi.org/10.1111/j.1467-937X.2009.00578.x">Rubio-Ramirez, J. F., Waggoner, D. F., &amp; Zha, T. (2010)</a></p></li><li id="fn2"><p><a href="https://doi.org/10.1111/1475-4932.12749">Read, M. (2023)</a></p></li></ol></aside></section>
-<section id="sign-1" class="slide level2" data-background-color="#001D31">
-<h2><span style="color: #ff68b4;">SIGN?</span></h2>
+<section id="more-signs" class="slide level2" data-background-color="#001D31">
+<h2><span style="color: #ff68b4;">More SIGNs?</span></h2>
 <ul>
-<li>The package alo supports restrictrions on <span class="math inline">\(B\)</span>, i.e.&nbsp;the contemporaneous relations</li>
+<li><p>The package alo supports restrictrions on <span class="math inline">\(B\)</span> i.e.&nbsp;contemporaneous relations <span class="math display">\[\begin{align*}
+\begin{bmatrix}
+b_{11}&amp;b_{12}&amp;b_{13}&amp;b_{14}\\
+b_{21}&amp;b_{22}&amp;b_{23}&amp;b_{24}\\
+b_{31}&amp;b_{32}&amp;b_{33}&amp;b_{34}\\
+b_{41}&amp;b_{42}&amp;b_{43}&amp;b_{44}
+\end{bmatrix}
+\begin{bmatrix}
+\text{CASH}_t \\\text{GDP}_t \\\text{CPI}_t \\\text{TWI}_t
+\end{bmatrix}
+&amp;=\dots
+\end{align*}\]</span></p></li>
+<li><p>Where the first row can be interpreted as policy reaction function <span class="math display">\[b_{11}\text{CASH}_t=-b_{12}\text{GDP}_t-b_{13}\text{CPI}_t-b_{14}\text{TWI}_t+\dots\]</span></p></li>
+<li><p>Economic theory says <span class="math display">\[\begin{align*}
+\begin{bmatrix}
++&amp;-&amp;-&amp;+\\
+*&amp;*&amp;*&amp;*\\*&amp;*&amp;*&amp;*\\*&amp;*&amp;*&amp;*
+\end{bmatrix}
+\begin{bmatrix}
+\text{CASH}_t \\\text{GDP}_t \\\text{CPI}_t \\\text{TWI}_t
+\end{bmatrix}
+&amp;=\dots
+\end{align*}\]</span></p></li>
 </ul>
 </section>
+<section id="impulse-responses" class="slide level2" data-background-color="#001D31">
+<h2><span style="color: #ff68b4;">Impulse responses</span></h2>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
 <section id="materials" class="slide level2" data-background-color="#001D31">
 <h2><span style="color: #ff68b4;">Materials</span></h2>
 <p><br></p>
@@ -640,6 +664,44 @@ u_{1t}^{\text{MP}}\\u_{2t}\\u_{3t}\\u_{4t}
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

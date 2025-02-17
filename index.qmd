@@ -62,39 +62,72 @@ By_t &= BAx_t + u_t
 \end{align*}
 
 - Commonly used in empirical macroeconomics
+  - combine economic theory with data
   - dynamic causal effect of monetary policy shock
 
 ## <span style="color: #ff68b4;">SIGN?</span> {background-color="#001D31"}
 
-- Can't identify $A$ and $B$ due to simultaneity, SIGN restriction helps[^1]!
+- Can't identify $A$ and $B$ due to simultaneity, SIGN restriction helps![^1]
 
-- For example, consider 4 variables[^2]: cash rate, GDP, consumer price index, and trade-weighted exchange rate
+- For example, consider 4 variables: cash rate, GDP, consumer price index, and trade-weighted exchange rate[^2]
 
 - According to economic theory, may restrict $B^{-1}$ s.t.
-
-\begin{align*}
-\begin{bmatrix}
-\text{CASH}_t\\\text{GDP}_t\\\text{CPI}_t\\\text{TWI}_t
-\end{bmatrix}
-=
-
-\dots+
-\begin{bmatrix}
-+&*&*&*\\*&*&*&*\\-&*&*&*\\+&*&*&*
-\end{bmatrix}
-\begin{bmatrix}
-u_{1t}^{\text{MP}}\\u_{2t}\\u_{3t}\\u_{4t}
-\end{bmatrix}
-\end{align*}
+  \begin{align*}
+  \begin{bmatrix}
+  \text{CASH}_t\\\text{GDP}_t\\\text{CPI}_t\\\text{TWI}_t
+  \end{bmatrix}
+  &=
+  
+  \dots+
+  \begin{bmatrix}
+  +&*&*&*\\*&*&*&*\\-&*&*&*\\+&*&*&*
+  \end{bmatrix}
+  \begin{bmatrix}
+  u_{1t}^{\text{MP}}\\u_{2t}\\u_{3t}\\u_{4t}
+  \end{bmatrix}
+  \end{align*}
 
 - $B^{-1}$ is the "impulse response" at horizon 0, can extend to further horizons
 
 [^1]:[Rubio-Ramirez, J. F., Waggoner, D. F., & Zha, T. (2010)](https://doi.org/10.1111/j.1467-937X.2009.00578.x)
 [^2]:[Read, M. (2023)](https://doi.org/10.1111/1475-4932.12749)
 
-## <span style="color: #ff68b4;">SIGN?</span> {background-color="#001D31"}
+## <span style="color: #ff68b4;">More SIGNs?</span> {background-color="#001D31"}
 
-- The package alo supports restrictrions on $B$, i.e. the contemporaneous relations
+- The package alo supports restrictrions on $B$ i.e. contemporaneous relations
+  \begin{align*}
+  \begin{bmatrix}
+  b_{11}&b_{12}&b_{13}&b_{14}\\
+  b_{21}&b_{22}&b_{23}&b_{24}\\
+  b_{31}&b_{32}&b_{33}&b_{34}\\
+  b_{41}&b_{42}&b_{43}&b_{44}
+  \end{bmatrix}
+  \begin{bmatrix}
+  \text{CASH}_t \\\text{GDP}_t \\\text{CPI}_t \\\text{TWI}_t
+  \end{bmatrix}
+  &=\dots
+  \end{align*}
+
+- Where the first row can be interpreted as policy reaction function
+  $$b_{11}\text{CASH}_t=-b_{12}\text{GDP}_t-b_{13}\text{CPI}_t-b_{14}\text{TWI}_t+\dots$$
+
+- Economic theory says
+  \begin{align*}
+  \begin{bmatrix}
+  +&-&-&+\\
+  *&*&*&*\\*&*&*&*\\*&*&*&*
+  \end{bmatrix}
+  \begin{bmatrix}
+  \text{CASH}_t \\\text{GDP}_t \\\text{CPI}_t \\\text{TWI}_t
+  \end{bmatrix}
+  &=\dots
+  \end{align*}
+
+## <span style="color: #ff68b4;">Impulse responses</span> {background-color="#001D31"}
+
+```{R, echo=FALSE}
+source("script.R")
+```
 
 ## <span style="color: #ff68b4;">Materials</span> {background-color="#001D31"}
 
