@@ -26,13 +26,13 @@ sign_structural <- matrix(NA, 4, 4)
 sign_structural[1, ] <- c(1, -1, -1, 1)
 
 # estimate the model
-spec <- specify_bsvarSIGN$new(
-  data = Y,
-  p = 4, # 4 lags
-  exogenous = Z,
-  sign_irf = sign_irf,
-  sign_structural = sign_structural
-)
-post <- estimate(spec, S = 1000, show_progress = FALSE)
-irf <- compute_impulse_responses(post, horizon = 24)
-plot(irf, probability = 0.68)
+Y |>
+  specify_bsvarSIGN$new(
+    p = 4,
+    exogenous = Z,
+    sign_irf = sign_irf,
+    sign_structural = sign_structural
+  ) |>
+  estimate(S = 1000, show_progress = FALSE) |>
+  compute_impulse_responses(horizon = 24) |>
+  plot(probability = 0.68)
