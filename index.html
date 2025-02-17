@@ -337,69 +337,85 @@
 </div>
 
 </section>
-<section id="predictive-analyses-using-r-packages-bsvars-and-bsvarsigns" class="slide level2" data-background-color="#001D31">
-<h2><span style="color: #ff68b4;">predictive analyses using R packages bsvars and bsvarSIGNs</span></h2>
-<p><br></p>
-<h3 style="color:#ff68b4;" id="structural-vector-autoregressions">Structural Vector Autoregressions</h3>
-<h3 style="color:#ff68b4;" id="identification-of-structural-vars">Identification of Structural VARs</h3>
-<h3 style="color:#ff68b4;" id="dynamic-causal-effects">Dynamic Causal Effects</h3>
-<h3 style="color:#ff68b4;" id="bayesian-estimation">Bayesian Estimation</h3>
-<h3 style="color:#ff68b4;" id="monetary-policy-analysis-using-the-bsvars-package">Monetary Policy Analysis Using the <a href="https://cran.r-project.org/package=bsvars">bsvars</a> Package</h3>
-</section>
 <section id="section" class="slide level2" data-background-color="#001D31">
-<h2></h2>
-<p><img data-src="bsvars.png" class="absolute" style="top: 30px; right: 275px; width: 500px; "></p>
+<h2><span style="color: #ff68b4;"></span></h2>
+<p><img data-src="bsvarSIGNs.png" class="absolute" style="top: 30px; right: 275px; width: 500px; "></p>
+</section>
+<section id="authors" class="slide level2" data-background-color="#001D31">
+<h2><span style="color: #ff68b4;">Authors</span></h2>
+<p><br></p>
+<h3 style="color:#ff68b4;" id="xiaolei-adam-wang">Xiaolei (Adam) Wang</h3>
+<ul>
+<li>Economics PhD student at the University of Melbourne</li>
+</ul>
+<h3 style="color:#ff68b4;" id="tomasz-woźniak">Tomasz Woźniak</h3>
+<ul>
+<li>Senior Lecturer at the University of Melbourne</li>
+</ul>
+</section>
+<section id="this-package" class="slide level2" data-background-color="#001D31">
+<h2><span style="color: #ff68b4;">This package</span></h2>
+<p><br></p>
+<h3 style="color:#ff68b4;" id="bayesian">(b)ayesian</h3>
+<h3 style="color:#ff68b4;" id="structural">(s)tructural</h3>
+<h3 style="color:#ff68b4;" id="vector-autoregressions">(v)ector (a)utoreg(r)ession(s)</h3>
+<h3 style="color:#ff68b4;" id="with-sign-restrictions">with (SIGN) restrictions</h3>
+</section>
+<section id="structural-1" class="slide level2" data-background-color="#001D31">
+<h2><span style="color: #ff68b4;">Structural?</span></h2>
+<ul>
+<li><p>VAR model: <span class="math display">\[\begin{align*}
+y_t &amp;= A_0 + A_1 y_{t-1} + \ldots + A_p y_{t-p} + \varepsilon_t\\
+y_t &amp;= Ax_t + \varepsilon_t
+\end{align*}\]</span></p></li>
+<li><p>Structural VAR (SVAR) identifies structural shocks: <span class="math display">\[u_t=B\varepsilon_t\]</span></p></li>
+<li><p>SVAR is a simultaneous equations model: <span class="math display">\[\begin{align*}
+y_t &amp;= Ax_t + B^{-1}u_t\\
+By_t &amp;= BAx_t + u_t
+\end{align*}\]</span></p></li>
+<li><p>Commonly used in empirical macroeconomics</p>
+<ul>
+<li>dynamic causal effect of monetary policy shock</li>
+</ul></li>
+</ul>
+</section>
+<section id="sign" class="slide level2" data-background-color="#001D31">
+<h2><span style="color: #ff68b4;">SIGN?</span></h2>
+<ul>
+<li><p>Can’t identify <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> due to simultaneity, SIGN restriction helps<sup>1</sup>!</p></li>
+<li><p>For example, consider 4 variables<sup>2</sup>: cash rate, GDP, consumer price index, and trade-weighted exchange rate</p></li>
+<li><p>According to economic theory, may restrict <span class="math inline">\(B^{-1}\)</span> s.t.</p></li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+\begin{bmatrix}
+\text{CASH}_t\\\text{GDP}_t\\\text{CPI}_t\\\text{TWI}_t
+\end{bmatrix}
+=
+
+\dots+
+\begin{bmatrix}
++&amp;*&amp;*&amp;*\\*&amp;*&amp;*&amp;*\\-&amp;*&amp;*&amp;*\\+&amp;*&amp;*&amp;*
+\end{bmatrix}
+\begin{bmatrix}
+u_{1t}^{\text{MP}}\\u_{2t}\\u_{3t}\\u_{4t}
+\end{bmatrix}
+\end{align*}\]</span></p>
+<ul>
+<li><span class="math inline">\(B^{-1}\)</span> is the “impulse response” at horizon 0, can extend to further horizons</li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn1"><p><a href="https://doi.org/10.1111/j.1467-937X.2009.00578.x">Rubio-Ramirez, J. F., Waggoner, D. F., &amp; Zha, T. (2010)</a></p></li><li id="fn2"><p><a href="https://doi.org/10.1111/1475-4932.12749">Read, M. (2023)</a></p></li></ol></aside></section>
+<section id="sign-1" class="slide level2" data-background-color="#001D31">
+<h2><span style="color: #ff68b4;">SIGN?</span></h2>
+<ul>
+<li>The package alo supports restrictrions on <span class="math inline">\(B\)</span>, i.e.&nbsp;the contemporaneous relations</li>
+</ul>
 </section>
 <section id="materials" class="slide level2" data-background-color="#001D31">
 <h2><span style="color: #ff68b4;">Materials</span></h2>
-<p><span class="math display">\[ \]</span></p>
-<h3 style="color:#ff68b4;" id="lecture-slides-as-a-website">Lecture Slides <a href="https://bsvars.github.io/2024-10-be24-bsvars">as a Website</a></h3>
-<h3 style="color:#ff68b4;" id="r-script-for-your-own-australian-monetary-policy-analysis"><a href="https://github.com/bsvars/2024-10-be24-bsvars/blob/main/be24-bsvars.R">R script</a> for your own Australian monetary policy analysis</h3>
+<p><br></p>
+<h3 style="color:#ff68b4;" id="lecture-slides-as-a-website">Lecture Slides <a href="https://github.com/bsvars/2025-02-DiCook">as a Website</a></h3>
+<h3 style="color:#ff68b4;" id="r-script-for-the-australian-monetary-policy-analysis"><a href="https://github.com/bsvars/2024-10-be24-bsvars/blob/main/be24-bsvars.R">R script</a> for the Australian monetary policy analysis</h3>
 <h3 style="color:#ff68b4;" id="github-repo-to-reproduce-the-slides-and-results">GitHub <a href="https://github.com/bsvars/2024-10-be24-bsvars">repo</a> to reproduce the slides and results</h3>
-<h3 style="color:#ff68b4;" id="tasks">Tasks</h3>
-</section>
-<section id="structural-vector-autoregressions-1" class="slide level2" data-background-color="#001D31">
-<h2><span style="color: #ff68b4;">Structural Vector Autoregressions</span></h2>
-<ul>
-<li>go-to models for the analysis of policy effects</li>
-</ul>
-<div>
-<ul>
-<li class="fragment">facilitate the analysis of <strong>dynamic causal effects</strong> of a well-isolated cause</li>
-<li class="fragment">extensively used for: <em>monetary</em> and <em>fiscal</em> policy, <em>financial</em> markets, …</li>
-<li class="fragment">relatively simple to work with data and provide <em>empirical evidence on the propagation of shocks</em> through economies and markets</li>
-<li class="fragment">provide data-driven stylised facts to be incorporated in theoretical model</li>
-<li class="fragment">require identification of the cause of the dynamic effects</li>
-<li class="fragment">extendible: <em>featuring many variations in specification</em>
-<ul>
-<li class="fragment">non-normality</li>
-<li class="fragment">heteroskedasticity</li>
-<li class="fragment">time-varying parameters</li>
-<li class="fragment">Bayesian</li>
-</ul></li>
-<li class="fragment">Proposed by <a href="https://doi.org/10.2307/1912017">Sims (1980)</a></li>
-</ul>
-</div>
-</section>
-<section id="structural-vector-autoregressions-2" class="slide level2" data-background-color="#001D31">
-<h2><span style="color: #ff68b4;">Structural Vector Autoregressions</span></h2>
-<h3 id="the-model">The model</h3>
-<p><span class="math display">\[\begin{align}
-\text{VAR equation: }&amp;&amp; y_t &amp;= \mathbf{A}*1 y*{t-1} + \dots + \mathbf{A}*p y*{t-p} + \boldsymbol\mu_0 + \epsilon_t\\[1ex]
-\text{structural equation: }&amp;&amp; \mathbf{B}\epsilon_t &amp;= u_t\\[1ex]
-\text{structural shocks: }&amp;&amp; u_t |Y_{t-1} &amp;\sim N_N\left(\mathbf{0}_N,\mathbf{I}_N\right)
-\end{align}\]</span></p>
-<div class="fragment">
-<!-- -->
-<h3 id="notation">Notation</h3>
-<ul>
-<li><p><span class="math inline">\(\mathbf{B}\)</span> - <span class="math inline">\(N\times N\)</span> structural matrix of contemporaneous relationships</p></li>
-<li><p><span class="math inline">\(u_t\)</span> - <span class="math inline">\(N\)</span>-vector of structural shocks at time <span class="math inline">\(t\)</span></p>
-<p>Isolating these shocks allows us to <em>identify dynamic effects of uncorrelated shocks</em> on variables <span class="math inline">\(y_t\)</span></p></li>
-<li><p><span class="math inline">\(\epsilon_t\)</span> - <span class="math inline">\(N\)</span>-vector with error terms at time <span class="math inline">\(t\)</span></p></li>
-<li><p>the rest as in the lecture on <a href="https://bsvars.github.io/2024-10-be24-bsvarSIGNs/#/varp-model">Bayesian VARs</a></p></li>
-</ul>
-</div>
 </section>
 <section id="section-1" class="slide level2" data-background-color="#001D31">
 <h2></h2>
@@ -410,6 +426,7 @@
 </div>
 </div>
 </section>
+
     </div>
   </div>
 
