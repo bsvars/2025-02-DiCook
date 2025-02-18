@@ -36,6 +36,26 @@ execute:
 
 <br/>
 
+### Over 2,000 downloads!{style="color:#ff68b4;"}
+
+### Users from...{style="color:#ff68b4;"}
+
+- central banks of Switzerland, Italy, Canada, Basil, and Mexico
+
+- postgraduate students
+
+- anonymous internet people
+
+### State-of-the-art econometric algorithms{style="color:#ff68b4;"}
+
+### Blazingly fast C++ code{style="color:#ff68b4;"}
+
+### User-friendly summary and plot{style="color:#ff68b4;"}
+
+## <span style='color: #ff68b4;'>The name</span> {background-color="#001D31"}
+
+<br/>
+
 ### (b)ayesian{style="color:#ff68b4;"}
 
 ### (s)tructural{style="color:#ff68b4;"}
