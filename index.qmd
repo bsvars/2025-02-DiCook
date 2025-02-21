@@ -1,19 +1,20 @@
 ---
-title: "<span style='color: #ff68b4;'>R package bsvarSIGNs</span>" 
+title: "<span style='color: #ff68b4;'>R package bsvarSIGNs</span>"
 author: "<span style='color: #ff68b4;'>Xiaolei (Adam) Wang</span>"
-email: "adam.wang@unimelb.edu.au"
+email: "<adam.wang@unimelb.edu.au>"
 title-slide-attributes:
   data-background-color: "#001D31"
 number-sections: false
-format: 
-  revealjs: 
+format:
+  revealjs:
     theme: [simple, theme.scss]
     slide-number: c
     transition: concave
     smaller: true
     multiplex: true
-execute: 
+execute:
   echo: true
+fontsize: 25pt
 ---
 
 ## <span style='color: #ff68b4;'></span> {background-color="#001D31"}
@@ -52,7 +53,7 @@ execute:
 
 ### User-friendly summary and plot{style="color:#ff68b4;"}
 
-## <span style='color: #ff68b4;'>The name</span> {background-color="#001D31"}
+## <span style='color: #ff68b4;'>Name?</span> {background-color="#001D31"}
 
 <br/>
 
@@ -84,8 +85,6 @@ execute:
   \end{align*}
 
 - Commonly used in empirical macroeconomics
-  - combine economic theory with data
-  - dynamic causal effects (impulse responses) of monetary policy shock
 
 ## <span style="color: #ff68b4;">SIGN?</span> {background-color="#001D31"}
 
@@ -93,10 +92,11 @@ execute:
 
 - Can't identify $A$ and $B$ due to simultaneity, SIGN restriction helps![^1]
 
-- For example, consider 4 variables: cash rate, GDP, consumer price index, and trade-weighted exchange rate[^2]
+- An Australian example[^2], consider 4 variables: cash rate, real GDP, consumer price index, trade-weighted exchange rate
 
-- According to economic theory, may restrict $B^{-1}$ s.t.
+- To identify monetary policy shock, may restrict $B^{-1}$ s.t.
   \begin{align*}
+  y_t &= \dots + B^{-1}u_t\\
   \begin{bmatrix}
   \text{CASH}_t\\\text{GDP}_t\\\text{CPI}_t\\\text{TWI}_t
   \end{bmatrix}
@@ -111,7 +111,7 @@ execute:
   \end{bmatrix}
   \end{align*}
 
-- $B^{-1}$ is the impulse responses at horizon 0, can extend to further horizons
+- $B^{-1}$ are the impulse responses at horizon 0, can extend to futher horizons
 
 [^1]:[Rubio-Ramirez, J. F., Waggoner, D. F., & Zha, T. (2010).](https://doi.org/10.1111/j.1467-937X.2009.00578.x)
 [^2]:[Read, M. (2023)](https://doi.org/10.1111/1475-4932.12749)
@@ -133,6 +133,7 @@ sign_irf
 
 - The package alo supports restrictrions on $B$ i.e. contemporaneous relations
   \begin{align*}
+  By_t&=\dots\\
   \begin{bmatrix}
   b_{11}&b_{12}&b_{13}&b_{14}\\
   b_{21}&b_{22}&b_{23}&b_{24}\\
@@ -173,19 +174,23 @@ sign_structural
 <br/>
 
 ```{R, eval=FALSE}
-Y |>
-  specify_bsvarSIGN$new(
-    p = 4,
-    exogenous = Z,
-    sign_irf = sign_irf,
-    sign_structural = sign_structural
-  ) |>
-  estimate(S = 1000, show_progress = FALSE) |>
-  compute_impulse_responses(horizon = 24) |>
-  plot(probability = 0.68)
+# specify the model
+spec <- specify_bsvarSIGN$new(
+  Y,
+  p = 4,
+  exogenous = Z,
+  sign_irf = sign_irf,
+  sign_structural = sign_structural
+)
+
+# sample posterior draws
+post <- estimate(spec, S = 1000, show_progress = FALSE)
+
+# compute impulse response functions
+irf <- compute_impulse_responses(post, horizon = 24)
 ```
 
-## <span style="color: #ff68b4;">Impulse responses</span> {background-color="#001D31"}
+## <span style="color: #ff68b4;">Impulse responses plot</span> {background-color="#001D31"}
 
 <br/>
 
@@ -193,13 +198,25 @@ Y |>
 source("script.R")
 ```
 
-- Positive monetary policy shock decreases real GDP (position [2, 1])
+```{R}
+plot(irf, probability = 0.68)
+```
+
+<!-- - Positive monetary policy shock (shock 1) decreases real GDP -->
+
+## <span style="color: #ff68b4;">Impulse responses summary</span> {background-color="#001D31"}
+
+<br/>
+
+```{R}
+summary(irf)$shock1$variable2
+```
 
 ## <span style="color: #ff68b4;">Materials</span> {background-color="#001D31"}
 
 <br/>
 
-### Lecture Slides [as a Website](https://github.com/bsvars/2025-02-DiCook) {style="color:#ff68b4;"}
+### Slides [as a Website](https://github.com/bsvars/2025-02-DiCook) {style="color:#ff68b4;"}
 
 ### [R script](https://github.com/bsvars/2025-02-DiCook/blob/master/script.R) for the Australian monetary policy analysis{style="color:#ff68b4;"}
 
@@ -207,4 +224,22 @@ source("script.R")
 
 ## {background-color="#001D31"}
 
-![](social.png){.absolute top=30 right=200 width="800"}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<div style="text-align:center; ">
+
+![](qiuqiu.jpg){width=40% height=40%}
+
+<div style="display: inline-block; margin-top: 5%; text-align:left;">
+
+<i class="fa-solid fa-envelope"></i> adamwang15[at]gmail.com
+
+<i class="fa-brands fa-linkedin"></i> xiaolei-adam-wang
+
+<i class="fa-brands fa-github"></i> adamwang15
+
+<i class="fa-brands fa-bluesky"></i> adamwang15.bsky.social
+
+</div>
+
+</div>
