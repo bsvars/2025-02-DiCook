@@ -1,5 +1,6 @@
 ---
 title: "<span style='color: #ff68b4;'>R package bsvarSIGNs</span>"
+subtitle: "<span style='color: #ff68b4;'>Di Cook Award presentation</span>"
 author: "<span style='color: #ff68b4;'>Xiaolei (Adam) Wang</span>"
 email: "<adam.wang@unimelb.edu.au>"
 title-slide-attributes:
@@ -85,6 +86,7 @@ fontsize: 25pt
   \end{align*}
 
 - Commonly used in empirical macroeconomics
+  - e.g. identify monetary policy shock, an unanticipated change in interest rate
 
 ## <span style="color: #ff68b4;">SIGN?</span> {background-color="#001D31"}
 
@@ -113,7 +115,7 @@ fontsize: 25pt
 
 - $B^{-1}$ are the impulse responses at horizon 0, can extend to futher horizons
 
-[^1]:[Rubio-Ramirez, J. F., Waggoner, D. F., & Zha, T. (2010).](https://doi.org/10.1111/j.1467-937X.2009.00578.x)
+[^1]:[Rubio-Ramirez, J. F., Waggoner, D. F., & Zha, T. (2010)](https://doi.org/10.1111/j.1467-937X.2009.00578.x)
 [^2]:[Read, M. (2023)](https://doi.org/10.1111/1475-4932.12749)
 
 ## <span style="color: #ff68b4;">Code</span> {background-color="#001D31"}
@@ -189,6 +191,21 @@ post <- estimate(spec, S = 5000, show_progress = FALSE)
 # compute impulse response functions
 irf <- compute_impulse_responses(post, horizon = 24)
 ```
+
+## <span style="color: #ff68b4;">Algorithm</span> {background-color="#001D31"}
+
+- Recall,
+  $$\varepsilon_t=B^{-1}u_t$$
+
+- Fix $\text{var}(u_t)=I$, let $\Sigma=\text{var}(\varepsilon_t)$ and $Q$ be some orthogonal matrix, can decompose
+  $$B^{-1}=\text{chol}(\Sigma)Q$$
+
+- Sample $Q$ uniformly by QR decomposition of $X$, where $X_{ij}\overset{i.i.d}{\sim}N(0,1)$[^3]
+  $$X=QR$$
+
+- Until the SIGN restrictions are satisfied
+
+[^3]: [Stewart, G. W. (1980)](https://doi.org/10.1137/0717034)
 
 ## <span style="color: #ff68b4;">Impulse responses plot</span> {background-color="#001D31"}
 

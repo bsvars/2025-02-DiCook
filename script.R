@@ -35,7 +35,7 @@ spec <- specify_bsvarSIGN$new(
 )
 
 # sample posterior draws
-post <- estimate(spec, S = 5000, show_progress = FALSE)
+post <- estimate(spec, S = 1000, show_progress = FALSE)
 
 # compute impulse response functions
 irf <- compute_impulse_responses(post, horizon = 24)
