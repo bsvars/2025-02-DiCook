@@ -2,6 +2,7 @@
 title: "<span style='color: #ff68b4;'>R package bsvarSIGNs</span>"
 subtitle: "<span style='color: #ff68b4;'>Di Cook Award presentation</span>"
 author: "<span style='color: #ff68b4;'>Xiaolei (Adam) Wang</span>"
+institution: "<span style='color: #ff68b4;'>University of Melbourne</span>"
 email: "<adam.wang@unimelb.edu.au>"
 title-slide-attributes:
   data-background-color: "#001D31"
@@ -228,6 +229,21 @@ plot(irf, probability = 0.68)
 ```{R}
 summary(irf)$shock1$variable2
 ```
+
+## <span style="color: #ff68b4;">More features</span> {background-color="#001D31"}
+
+- Hyperparameter estimation via adaptive Metropolis[^4]
+
+- Zero and sign restrictions[^5]
+
+- Narrative restrictions[^6]
+
+- All restrictions at once[^7]
+
+[^4]: [Giannone, D., Lenza, M., & Primiceri, G. E. (2015)](https://doi.org/10.1162/REST_a_00483)
+[^5]: [Arias, J. E., Rubio‐Ramírez, J. F., & Waggoner, D. F. (2018)](https://doi.org/10.3982/ECTA14468)
+[^6]: [Antolín-Díaz, J., & Rubio-Ramírez, J. F. (2018)](https://doi.org/10.3982/ECTA14468)
+[^7]: [My little proof!](https://adamwang15.github.io/mcxs-report/#extension)
 
 ## <span style="color: #ff68b4;">Materials</span> {background-color="#001D31"}
 
