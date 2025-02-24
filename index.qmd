@@ -97,7 +97,7 @@ fontsize: 25pt
 
 - An Australian example[^2], consider 4 variables: cash rate, real GDP, consumer price index, trade-weighted exchange rate
 
-- To identify monetary policy shock, may restrict $B^{-1}$ s.t.
+- To identify positive monetary policy shock, may restrict $B^{-1}$ s.t.
   \begin{align*}
   y_t &= \dots + B^{-1}u_t\\
   \begin{bmatrix}
