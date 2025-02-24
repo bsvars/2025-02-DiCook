@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Xiaolei (Adam) Wang">
-  <title>R package bsvarSIGNs</title>
+  <title>R Package bsvarSIGNs</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -391,8 +391,8 @@
     <div class="slides">
 
 <section id="title-slide" data-background-color="#001D31" class="quarto-title-block center">
-  <h1 class="title"><span style="color: #ff68b4;">R package bsvarSIGNs</span></h1>
-  <p class="subtitle"><span style="color: #ff68b4;">Di Cook Award presentation</span></p>
+  <h1 class="title"><span style="color: #ff68b4;">R Package bsvarSIGNs</span></h1>
+  <p class="subtitle"><span style="color: #ff68b4;">Di Cook Award Presentation</span></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -438,8 +438,8 @@
 <p><br></p>
 <h3 style="color:#ff68b4;" id="bayesian">(b)ayesian</h3>
 <h3 style="color:#ff68b4;" id="structural">(s)tructural</h3>
-<h3 style="color:#ff68b4;" id="vector-autoregressions">(v)ector (a)utoreg(r)ession(s)</h3>
-<h3 style="color:#ff68b4;" id="with-sign-restrictions">with (SIGN) restrictions</h3>
+<h3 style="color:#ff68b4;" id="vector-autoregressions">(v)ector (a)utoreg(r)essions</h3>
+<h3 style="color:#ff68b4;" id="with-sign-restrictions">with (SIGN) restriction(s)</h3>
 </section>
 <section id="structural-1" class="slide level2" data-background-color="#001D31">
 <h2><span style="color: #ff68b4;">Structural?</span></h2>
@@ -502,7 +502,7 @@ u_{1t}^{\text{MP}}\\u_{2t}\\u_{3t}\\u_{4t}
 </div>
 </section>
 <section id="more-signs" class="slide level2" data-background-color="#001D31">
-<h2><span style="color: #ff68b4;">More SIGNs?</span></h2>
+<h2><span style="color: #ff68b4;">More SIGNs</span></h2>
 <p><br></p>
 <ul>
 <li><p>The package alo supports restrictrions on <span class="math inline">\(B\)</span> i.e.&nbsp;contemporaneous relations <span class="math display">\[\begin{align*}
@@ -595,32 +595,28 @@ b_{41}&amp;b_{42}&amp;b_{43}&amp;b_{44}
  **************************************************|</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>         mean        sd 5% quantile 95% quantile
-0  -0.1848423 0.1449305  -0.4373337  0.028610188
-1  -0.1972327 0.1557155  -0.4658174  0.037483292
-2  -0.2189608 0.1647144  -0.5028971  0.030829276
-3  -0.2365112 0.1678426  -0.5272946  0.021060908
-4  -0.2459333 0.1686773  -0.5386727  0.012236915
-5  -0.2508634 0.1690024  -0.5458537  0.009179505
-6  -0.2528088 0.1699245  -0.5454282  0.009509608
-7  -0.2523575 0.1710734  -0.5472224  0.010631204
-8  -0.2518989 0.1723405  -0.5459244  0.014072723
-9  -0.2515828 0.1736392  -0.5451678  0.015754998
-10 -0.2514645 0.1749270  -0.5452272  0.017639028
-11 -0.2514663 0.1761967  -0.5457441  0.019627121
-12 -0.2515380 0.1774506  -0.5463094  0.021278089
-13 -0.2516358 0.1786955  -0.5465798  0.022088615
-14 -0.2517385 0.1799440  -0.5482671  0.026313974
-15 -0.2518325 0.1812067  -0.5496745  0.030087675
-16 -0.2519159 0.1824927  -0.5522934  0.032792723
-17 -0.2519896 0.1838093  -0.5521873  0.034453904
-18 -0.2520560 0.1851625  -0.5536774  0.037861310
-19 -0.2521170 0.1865569  -0.5560977  0.040219785
-20 -0.2521741 0.1879959  -0.5550243  0.044710363
-21 -0.2522282 0.1894824  -0.5561556  0.047663624
-22 -0.2522796 0.1910182  -0.5574268  0.052534098
-23 -0.2523287 0.1926051  -0.5617399  0.055432091
-24 -0.2523755 0.1942443  -0.5633436  0.057803345</code></pre>
+<pre><code>         mean        sd 5% quantile  95% quantile
+0  -0.1837484 0.1438489  -0.4295756  0.0254521230
+1  -0.1919969 0.1462399  -0.4442807  0.0241581974
+2  -0.2125791 0.1469114  -0.4621927  0.0112834321
+3  -0.2323939 0.1460791  -0.4757095  0.0008290802
+4  -0.2528213 0.1488622  -0.4977457 -0.0104613974
+5  -0.2637240 0.1525702  -0.5153036 -0.0134905369
+6  -0.2664673 0.1563720  -0.5256955 -0.0122216476
+7  -0.2622209 0.1593557  -0.5315106 -0.0038934003
+8  -0.2547855 0.1615475  -0.5298977  0.0063592121
+9  -0.2457313 0.1631078  -0.5232646  0.0128340909
+10 -0.2362044 0.1642777  -0.5143287  0.0254801247
+11 -0.2267619 0.1652260  -0.5048653  0.0374801324
+12 -0.2177028 0.1660716  -0.4972879  0.0423198619
+13 -0.2091278 0.1668833  -0.4949965  0.0501458378
+14 -0.2010556 0.1677055  -0.4830306  0.0564884001
+15 -0.1934627 0.1685626  -0.4773320  0.0621637593
+16 -0.1863216 0.1694680  -0.4703457  0.0667087572
+17 -0.1796096 0.1704267  -0.4640941  0.0726520546
+18 -0.1733106 0.1714390  -0.4596467  0.0781103445
+19 -0.1674123 0.1725033  -0.4538969  0.0854539864
+20 -0.1619036 0.1736181  -0.4535250  0.0896760294</code></pre>
 </div>
 </div>
 </section>

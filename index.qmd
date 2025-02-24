@@ -1,6 +1,6 @@
 ---
-title: "<span style='color: #ff68b4;'>R package bsvarSIGNs</span>"
-subtitle: "<span style='color: #ff68b4;'>Di Cook Award presentation</span>"
+title: "<span style='color: #ff68b4;'>R Package bsvarSIGNs</span>"
+subtitle: "<span style='color: #ff68b4;'>Di Cook Award Presentation</span>"
 author: "<span style='color: #ff68b4;'>Xiaolei (Adam) Wang</span>"
 institution: "<span style='color: #ff68b4;'>University of Melbourne</span>"
 email: "<adam.wang@unimelb.edu.au>"
@@ -63,9 +63,9 @@ fontsize: 25pt
 
 ### (s)tructural{style="color:#ff68b4;"}
 
-### (v)ector (a)utoreg(r)ession(s){style="color:#ff68b4;"}
+### (v)ector (a)utoreg(r)essions{style="color:#ff68b4;"}
 
-### with (SIGN) restrictions{style="color:#ff68b4;"}
+### with (SIGN) restriction(s){style="color:#ff68b4;"}
 
 ## <span style="color: #ff68b4;">Structural?</span> {background-color="#001D31"}
 
@@ -130,7 +130,7 @@ sign_irf[3, 1] <- -1
 sign_irf
 ```
 
-## <span style="color: #ff68b4;">More SIGNs?</span> {background-color="#001D31"}
+## <span style="color: #ff68b4;">More SIGNs</span> {background-color="#001D31"}
 
 <br/>
 

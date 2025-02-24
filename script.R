@@ -34,11 +34,17 @@ spec <- specify_bsvarSIGN$new(
   sign_structural = sign_structural
 )
 
+# disable dummy observation priors
+spec$prior$Ysoc <- matrix(NA, nrow(spec$prior$Ysoc), 0)
+spec$prior$Xsoc <- matrix(NA, nrow(spec$prior$Xsoc), 0)
+spec$prior$Ysur <- matrix(NA, nrow(spec$prior$Ysur), 0)
+spec$prior$Xsur <- matrix(NA, nrow(spec$prior$Xsur), 0)
+
 # sample posterior draws
 post <- estimate(spec, S = 5000, show_progress = FALSE)
 
 # compute impulse response functions
-irf <- compute_impulse_responses(post, horizon = 24)
+irf <- compute_impulse_responses(post, horizon = 20)
 rownames(irf) <- c("Cash Rate", "Real GDP", "CPI", "TWI")
 colnames(irf) <- c("Monetary Policy Shock", "shock 2", "shock 3", "shock aa")
 
