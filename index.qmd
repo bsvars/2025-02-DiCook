@@ -267,7 +267,7 @@ summary(irf)$shock1$variable2
 
 <i class="fa-solid fa-envelope"></i> adamwang15[at]gmail.com
 
-<i class="fa-brands fa-linkedin"></i> xiaolei-adam-wang
+<i class="fa-brands fa-linkedin"></i> adamwang15
 
 <i class="fa-brands fa-github"></i> adamwang15
 
