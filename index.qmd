@@ -47,7 +47,7 @@ fontsize: 25pt
 
 - postgraduate students
 
-- anonymous internet people
+- anonymous internet users
 
 ### State-of-the-art econometric algorithms{style="color:#ff68b4;"}
 
@@ -73,12 +73,12 @@ fontsize: 25pt
 
 - VAR model:
   \begin{align*}
-  y_t &= A_0 + A_1 y_{t-1} + \ldots + A_p y_{t-p} + \varepsilon_t\\
+  y_t &= A_1 y_{t-1} + \ldots + A_p y_{t-p} + A_dd_t + \varepsilon_t\\
   y_t &= Ax_t + \varepsilon_t
   \end{align*}
 
-- Structural VAR (SVAR) identifies structural shocks:
-  $$u_t=B\varepsilon_t$$
+- Structural VAR (SVAR) identifies well-isolated structural shocks:
+  $$u_t=B\varepsilon_t,\quad \text{var}(u_t)=I$$
 
 - SVAR is a simultaneous equations model:
   \begin{align*}
@@ -95,7 +95,7 @@ fontsize: 25pt
 
 - Can't identify $A$ and $B$ due to simultaneity, SIGN restriction helps![^1]
 
-- An Australian example[^2], consider 4 variables: cash rate, real GDP, consumer price index, trade-weighted exchange rate
+- An Australian example[^2], consider 4 variables: cash rate, real GDP, trimmed-mean CPI, trade-weighted exchange rate
 
 - To identify positive monetary policy shock, may restrict $B^{-1}$ s.t.
   \begin{align*}
@@ -190,21 +190,21 @@ spec <- specify_bsvarSIGN$new(
 post <- estimate(spec, S = 5000, show_progress = FALSE)
 
 # compute impulse response functions
-irf <- compute_impulse_responses(post, horizon = 24)
+irf <- compute_impulse_responses(post, horizon = 20)
 ```
 
 ## <span style="color: #ff68b4;">Algorithm</span> {background-color="#001D31"}
 
 - Recall,
-  $$\varepsilon_t=B^{-1}u_t$$
+  $$\varepsilon_t=B^{-1}u_t,\quad \text{var}(u_t)=I$$
 
-- Fix $\text{var}(u_t)=I$, let $\Sigma=\text{var}(\varepsilon_t)$ and $Q$ be some orthogonal matrix, can decompose
+- Let $\Sigma=\text{var}(\varepsilon_t)$ and $Q$ be some orthogonal matrix, can decompose
   $$B^{-1}=\text{chol}(\Sigma)Q$$
 
 - Sample $Q$ uniformly by QR decomposition of $X$, where $X_{ij}\overset{i.i.d}{\sim}N(0,1)$[^3]
   $$X=QR$$
 
-- Until the SIGN restrictions are satisfied
+- Until the SIGN restrictions for $B$ and $B^{-1}$ are satisfied
 
 [^3]: [Stewart, G. W. (1980)](https://doi.org/10.1137/0717034)
 
@@ -254,6 +254,10 @@ summary(irf)$shock1$variable2
 ### [R script](https://github.com/bsvars/2025-02-DiCook/blob/master/script.R) for the Australian monetary policy analysis{style="color:#ff68b4;"}
 
 ### GitHub [repo](https://github.com/bsvars/2025-02-DiCook) to reproduce the slides and results{style="color:#ff68b4;"}
+
+## {background-color="#001D31"}
+
+![](social_DiCook.png){.absolute top=10 right=10 width="1000"}
 
 ## {background-color="#001D31"}
 

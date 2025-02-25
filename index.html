@@ -427,7 +427,7 @@
 <ul>
 <li><p>central banks of Switzerland, Italy, Canada, Basil, and Mexico</p></li>
 <li><p>postgraduate students</p></li>
-<li><p>anonymous internet people</p></li>
+<li><p>anonymous internet users</p></li>
 </ul>
 <h3 style="color:#ff68b4;" id="state-of-the-art-econometric-algorithms">State-of-the-art econometric algorithms</h3>
 <h3 style="color:#ff68b4;" id="blazingly-fast-c-code">Blazingly fast C++ code</h3>
@@ -446,10 +446,10 @@
 <p><br></p>
 <ul>
 <li><p>VAR model: <span class="math display">\[\begin{align*}
-y_t &amp;= A_0 + A_1 y_{t-1} + \ldots + A_p y_{t-p} + \varepsilon_t\\
+y_t &amp;= A_1 y_{t-1} + \ldots + A_p y_{t-p} + A_dd_t + \varepsilon_t\\
 y_t &amp;= Ax_t + \varepsilon_t
 \end{align*}\]</span></p></li>
-<li><p>Structural VAR (SVAR) identifies structural shocks: <span class="math display">\[u_t=B\varepsilon_t\]</span></p></li>
+<li><p>Structural VAR (SVAR) identifies well-isolated structural shocks: <span class="math display">\[u_t=B\varepsilon_t,\quad \text{var}(u_t)=I\]</span></p></li>
 <li><p>SVAR is a simultaneous equations model: <span class="math display">\[\begin{align*}
 y_t &amp;= Ax_t + B^{-1}u_t\\
 By_t &amp;= BAx_t + u_t
@@ -465,7 +465,7 @@ By_t &amp;= BAx_t + u_t
 <p><br></p>
 <ul>
 <li><p>Can’t identify <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> due to simultaneity, SIGN restriction helps!<sup>1</sup></p></li>
-<li><p>An Australian example<sup>2</sup>, consider 4 variables: cash rate, real GDP, consumer price index, trade-weighted exchange rate</p></li>
+<li><p>An Australian example<sup>2</sup>, consider 4 variables: cash rate, real GDP, trimmed-mean CPI, trade-weighted exchange rate</p></li>
 <li><p>To identify positive monetary policy shock, may restrict <span class="math inline">\(B^{-1}\)</span> s.t. <span class="math display">\[\begin{align*}
 y_t &amp;= \dots + B^{-1}u_t\\
 \begin{bmatrix}
@@ -561,16 +561,16 @@ b_{41}&amp;b_{42}&amp;b_{43}&amp;b_{44}
 <span id="cb5-11"><a href=""></a>post <span class="ot">&lt;-</span> <span class="fu">estimate</span>(spec, <span class="at">S =</span> <span class="dv">5000</span>, <span class="at">show_progress =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb5-12"><a href=""></a></span>
 <span id="cb5-13"><a href=""></a><span class="co"># compute impulse response functions</span></span>
-<span id="cb5-14"><a href=""></a>irf <span class="ot">&lt;-</span> <span class="fu">compute_impulse_responses</span>(post, <span class="at">horizon =</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-14"><a href=""></a>irf <span class="ot">&lt;-</span> <span class="fu">compute_impulse_responses</span>(post, <span class="at">horizon =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="algorithm" class="slide level2" data-background-color="#001D31">
 <h2><span style="color: #ff68b4;">Algorithm</span></h2>
 <ul>
-<li><p>Recall, <span class="math display">\[\varepsilon_t=B^{-1}u_t\]</span></p></li>
-<li><p>Fix <span class="math inline">\(\text{var}(u_t)=I\)</span>, let <span class="math inline">\(\Sigma=\text{var}(\varepsilon_t)\)</span> and <span class="math inline">\(Q\)</span> be some orthogonal matrix, can decompose <span class="math display">\[B^{-1}=\text{chol}(\Sigma)Q\]</span></p></li>
+<li><p>Recall, <span class="math display">\[\varepsilon_t=B^{-1}u_t,\quad \text{var}(u_t)=I\]</span></p></li>
+<li><p>Let <span class="math inline">\(\Sigma=\text{var}(\varepsilon_t)\)</span> and <span class="math inline">\(Q\)</span> be some orthogonal matrix, can decompose <span class="math display">\[B^{-1}=\text{chol}(\Sigma)Q\]</span></p></li>
 <li><p>Sample <span class="math inline">\(Q\)</span> uniformly by QR decomposition of <span class="math inline">\(X\)</span>, where <span class="math inline">\(X_{ij}\overset{i.i.d}{\sim}N(0,1)\)</span><sup>1</sup> <span class="math display">\[X=QR\]</span></p></li>
-<li><p>Until the SIGN restrictions are satisfied</p></li>
+<li><p>Until the SIGN restrictions for <span class="math inline">\(B\)</span> and <span class="math inline">\(B^{-1}\)</span> are satisfied</p></li>
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn3"><p><a href="https://doi.org/10.1137/0717034">Stewart, G. W. (1980)</a></p></li></ol></aside></section>
 <section id="impulse-responses-plot" class="slide level2" data-background-color="#001D31">
@@ -637,6 +637,10 @@ b_{41}&amp;b_{42}&amp;b_{43}&amp;b_{44}
 <h3 style="color:#ff68b4;" id="github-repo-to-reproduce-the-slides-and-results">GitHub <a href="https://github.com/bsvars/2025-02-DiCook">repo</a> to reproduce the slides and results</h3>
 </section>
 <section id="section-1" class="slide level2" data-background-color="#001D31">
+<h2></h2>
+<p><img data-src="social_DiCook.png" class="absolute" style="top: 10px; right: 10px; width: 1000px; "></p>
+</section>
+<section id="section-2" class="slide level2" data-background-color="#001D31">
 <h2></h2>
 <p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"></p>
 <div style="text-align:center; ">
